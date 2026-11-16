@@ -18,7 +18,7 @@ Pi gateway API는 `docs/api-manual.html`.
 | 파트 | 하는 일 | 담당 |
 |---|---|---|
 | `esp32` | Edge Impulse 사람 감지, 카메라 펌웨어, 파이로 사진 전송 | 대희 (@widee2018-code) |
-| `pi` | Pi 환경·배포·측정, gateway, PPE 모델 ONNX 변환·추론 | 명수 (@wkuMyeungsu), 우진 (@MOTNV) |
+| `pi` | Pi 환경·배포·측정, gateway, PPE 모델 ONNX 변환·추론 | 명수 (@myeongsu-dev), 우진 (@MOTNV) |
 | `cloud` | Supabase 테이블·버킷·RLS, Supabase에 기록을 쓰는 uploader | 도은 (@ki543219) |
 | `web` | 위반 기록 웹 페이지 | 진아 (@Binary-Ah) |
 

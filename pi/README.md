@@ -56,12 +56,12 @@ pi-deploy release                    # 끝나면 푼다
 
 ```bash
 # 1) 배포에 쓰는 저장소 (이미 다른 곳에 있으면 저장소 변수 PI_DIR에 그 경로를 적는다)
-git clone https://github.com/wkuMyeungsu/safety-edge-ai ~/safety-edge-ai
+git clone https://github.com/myeongsu-dev/safety-edge-ai ~/safety-edge-ai
 cp ~/safety-edge-ai/.env.example ~/safety-edge-ai/pi/.env   # 값 채우기
 
 # 2) runner: GitHub → Settings → Actions → Runners → New self-hosted runner → Linux · ARM64
 #    화면의 download 명령을 그대로 실행한 뒤, config만 라벨을 붙여 실행한다
-./config.sh --url https://github.com/wkuMyeungsu/safety-edge-ai --token <화면의 토큰> --name rpi5 --labels pi --unattended
+./config.sh --url https://github.com/myeongsu-dev/safety-edge-ai --token <화면의 토큰> --name rpi5 --labels pi --unattended
 sudo usermod -aG docker "$USER"         # runner가 docker를 쓸 수 있게
 sudo ./svc.sh install "$USER" && sudo ./svc.sh start   # 재부팅해도 자동 시작
 

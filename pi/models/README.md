@@ -17,13 +17,13 @@
 | 원본 Model Card 라이선스 표시 | Apache-2.0. Ultralytics 코드와 원본 데이터의 별도 조건은 [원본 Model Card](https://huggingface.co/killuminati1/construction-ppe-yolov8)를 확인한다 |
 
 ```bash
-curl -fL https://github.com/wkuMyeungsu/safety-edge-ai/releases/download/model-v1/ppe_yolov8.onnx -o pi/models/ppe_yolov8.onnx
+curl -fL https://github.com/myeongsu-dev/safety-edge-ai/releases/download/model-v1/ppe_yolov8.onnx -o pi/models/ppe_yolov8.onnx
 python pi/models/verify_onnx.py pi/models/ppe_yolov8.onnx --sha256 0471240ce41e89bc0e58daf0b12d33102d6a70db5bad611f90533f6d3402cb17
 ```
 
 ## 선택적 속도 최적화 후보: 576 입력
 
-[model-v1-576](https://github.com/wkuMyeungsu/safety-edge-ai/releases/tag/model-v1-576)은 기존 SafeSight 원본 가중치를 **576×576 FP32, opset 17**로 다시 내보낸 후보이다. 640 배포본과 `model-v1`은 보존한다. 서버는 모델의 정적 입력 크기를 읽으므로 추론 코드·판정 임계값·기대 정답 변경 없이 사용할 수 있다. 모델 파일만 자동으로 교체하지는 않는다.
+[model-v1-576](https://github.com/myeongsu-dev/safety-edge-ai/releases/tag/model-v1-576)은 기존 SafeSight 원본 가중치를 **576×576 FP32, opset 17**로 다시 내보낸 후보이다. 640 배포본과 `model-v1`은 보존한다. 서버는 모델의 정적 입력 크기를 읽으므로 추론 코드·판정 임계값·기대 정답 변경 없이 사용할 수 있다. 모델 파일만 자동으로 교체하지는 않는다.
 
 - 메타데이터: [model-v1-576.json](model-v1-576.json)
 - SHA256: `85533d8ef50e65435e5b7d9dfb7d87f5f0aa604469ffe222a471ae17648bd2f2`
@@ -32,7 +32,7 @@ python pi/models/verify_onnx.py pi/models/ppe_yolov8.onnx --sha256 0471240ce41e8
 
 ```bash
 mkdir -p pi/models/optimized-576
-curl -fL https://github.com/wkuMyeungsu/safety-edge-ai/releases/download/model-v1-576/ppe_yolov8.onnx \
+curl -fL https://github.com/myeongsu-dev/safety-edge-ai/releases/download/model-v1-576/ppe_yolov8.onnx \
   -o pi/models/optimized-576/ppe_yolov8.onnx
 python pi/models/verify_onnx.py pi/models/optimized-576/ppe_yolov8.onnx \
   --sha256 85533d8ef50e65435e5b7d9dfb7d87f5f0aa604469ffe222a471ae17648bd2f2
@@ -200,7 +200,7 @@ python3 pi/models/run_container_benchmark.py \
 
 서버 추론 시간은 전처리·ONNX 실행·후처리·판정을 포함한다. JPEG 디코딩과 요청 대기는 HTTP 왕복 시간에만 포함된다. P95는 측정 20개의 nearest-rank 값이다. 메모리 최대값에는 QEMU와 모델 로드·해시 검사·계측 과정도 포함된다. **26초라는 시간은 이 PC의 에뮬레이션 결과이며 Pi 5 성능이나 현장 정확도 검증 결과가 아니다.**
 
-검증 과정에서 커밋 라벨 없는 이미지가 거부되고 성공 보고서가 생성되지 않는 것도 확인했다. 측정 후 전용 컨테이너는 자동 제거했으며, 재실행용 이미지는 남겨 두었다. 같은 코드의 ARM64 CI는 [run 41394841318](https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41394841318)에서 58개 통과, 1개 건너뜀(모델 없는 경우의 503 검사)을 기록했다.
+검증 과정에서 커밋 라벨 없는 이미지가 거부되고 성공 보고서가 생성되지 않는 것도 확인했다. 측정 후 전용 컨테이너는 자동 제거했으며, 재실행용 이미지는 남겨 두었다. 같은 코드의 ARM64 CI는 [run 41394841318](https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41394841318)에서 58개 통과, 1개 건너뜀(모델 없는 경우의 503 검사)을 기록했다.
 
 ## 실제 Pi 원격 연결·판정 확인 (2026-11-02)
 
@@ -217,6 +217,6 @@ python3 pi/models/run_container_benchmark.py \
 
 현재 gateway API와 `deploy-pi status`에는 ONNX SHA256과 메모리 측정값이 없어 이를 확인하지 못했다. 파일명·640 입력·PPE 클래스 매핑은 시작 로그에서 확인했지만, 모델 파일 동일성과 576 적용·메모리 실측은 Pi 담당자의 확인이 필요하다.
 
-- [배포 성공](https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41400753480), [시험 잠금 해제 성공](https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41401068822). 로그에서 시험 중 표시가 없음을 확인했다.
+- [배포 성공](https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41400753480), [시험 잠금 해제 성공](https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41401068822). 로그에서 시험 중 표시가 없음을 확인했다.
 - 시험 장치 ID는 `test-woojin-20261102-063509`이며 위반 시험 기록 2건은 Supabase `log_id=8,9`로 남아 있다. 공개 API에 삭제 기능이 없어 삭제하지 않았다. 이 장치 ID로 식별할 수 있다.
 - 인증 토큰은 요청 헤더에만 사용했으며 보고서·코드·로그에 저장하지 않았다.

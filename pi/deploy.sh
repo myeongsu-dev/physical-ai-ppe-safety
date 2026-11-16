@@ -14,7 +14,7 @@ set -euo pipefail
 
 REPO="${PI_DIR:-$HOME/safety-edge-ai}"
 LOCK="$HOME/.safety-edge-ai-deploy-lock"
-ME="${GITHUB_ACTOR:-wkuMyeungsu}"   # Pi 셸에 들어오는 사람은 명수뿐이라 기본값을 명수 GitHub 아이디로 둔다
+ME="${GITHUB_ACTOR:-myeongsu-dev}"   # Pi 셸에 들어오는 사람은 명수뿐이라 기본값을 명수 GitHub 아이디로 둔다
 SUMMARY="${GITHUB_STEP_SUMMARY:-/dev/null}"
 
 kst() { TZ=KST-9 date -d "@$1" +%H:%M; }   # Pi에 시간대 파일이 없어도 한국 시각
