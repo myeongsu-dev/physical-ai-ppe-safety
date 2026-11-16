@@ -168,9 +168,9 @@
   "stored_records_deleted": false,
   "cleanup_note": "Supabase 시험 기록 2건(log_id 8,9)은 위 device_id로 식별 가능. 공개 gateway API에 삭제 기능이 없어 삭제하지 않음. 버퍼 저장 응답은 없었음.",
   "workflow": {
-    "status": "https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41400471190",
-    "deploy": "https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41400753480",
-    "release": "https://github.com/wkuMyeungsu/safety-edge-ai/actions/runs/41401068822",
+    "status": "https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41400471190",
+    "deploy": "https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41400753480",
+    "release": "https://github.com/myeongsu-dev/safety-edge-ai/actions/runs/41401068822",
     "release_verified": true
   }
 }
